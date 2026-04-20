@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { buildPackageWhatsAppUrl, buildServicesWhatsAppUrl } from "@/lib/whatsapp.mjs";
 
 type Lang = "it" | "en" | "pt" | "de";
 type ServiceKey =
@@ -129,6 +130,12 @@ export default function Home() {
       totalNote: "I servizi mensili si rinnovano ogni mese. I servizi una tantum si pagano una sola volta.",
       packagesTitle: "Pacchetti",
       whyTitle: "Perché scegliere noi",
+      lockerKicker: "Per e-commerce e logistica",
+      lockerTitle: "Locker Pickup Optimizer",
+      lockerHeadline: "Più ritiri completati, meno attrito nell'ultimo miglio.",
+      lockerDesc: "Aiutiamo e-commerce, marketplace locali e operatori logistici a ridurre i ritiri mancati, migliorare l'esperienza cliente e rendere più efficiente la consegna in locker e pickup point.",
+      lockerPrimaryCta: "Prenota una consulenza",
+      lockerProof: "Ideale per business con logiche di consegna, ritiro, omnicanalità e crescita locale.",
       finalCta: "Pronto a crescere?",
       footer: "Servizio 100% online • WhatsApp: +39 393 6232182",
       monthlyLabel: "include servizi mensili",
@@ -155,6 +162,18 @@ export default function Home() {
         { icon:"⟳", title:"100% online",            desc:"Gestiamo tutto da remoto. Comunicazione diretta via WhatsApp e video call, senza appuntamenti fisici." },
         { icon:"▲", title:"Struttura scalabile",    desc:"Inizia con poco e cresci nel tempo. Ogni servizio si adatta al tuo ritmo e al tuo budget." },
       ],
+      lockerBenefits: [
+        { title:"Riduci i ritiri falliti", desc:"Ottimizziamo reminder, comunicazione e flussi di ritiro per abbassare l'attrito tra consegna e pickup finale." },
+        { title:"Più efficienza operativa", desc:"Meno colli di bottiglia, meno ticket di assistenza e una gestione più chiara dei punti di ritiro." },
+        { title:"Migliore customer experience", desc:"Messaggi, CTA e percorsi più semplici per aiutare il cliente a completare il ritiro senza confusione." },
+        { title:"Strategia data-driven", desc:"Analizziamo conversione, utilizzo e punti critici per migliorare pickup, retention e marginalità." },
+      ],
+      lockerUseCases: [
+        "E-commerce che vogliono offrire ritiro in locker / pickup point",
+        "Brand locali che vogliono ridurre costi di consegna fallita",
+        "Marketplace verticali che vogliono migliorare il last-mile",
+        "Operatori logistici che vogliono aumentare utilizzo e performance dei punti di ritiro",
+      ],
     },
     en: {
       slogan: "Real clients.\nMeasurable growth.",
@@ -172,6 +191,12 @@ export default function Home() {
       totalNote: "Monthly services renew each month. One-time services are paid once.",
       packagesTitle: "Packages",
       whyTitle: "Why choose us",
+      lockerKicker: "For e-commerce and logistics",
+      lockerTitle: "Locker Pickup Optimizer",
+      lockerHeadline: "More completed pickups, less friction in the last mile.",
+      lockerDesc: "We help e-commerce brands, local marketplaces and logistics operators reduce missed pickups, improve customer experience and make locker and pickup-point delivery more efficient.",
+      lockerPrimaryCta: "Book a consultation",
+      lockerProof: "Ideal for businesses focused on delivery, pickup, omnichannel growth and local expansion.",
       finalCta: "Ready to grow?",
       footer: "100% online service • WhatsApp: +39 393 6232182",
       monthlyLabel: "includes monthly services",
@@ -198,6 +223,18 @@ export default function Home() {
         { icon:"⟳", title:"100% remote",         desc:"We manage everything remotely. Direct communication via WhatsApp and video calls — no physical appointments." },
         { icon:"▲", title:"Scalable structure",  desc:"Start small and grow over time. Every service adapts to your pace and budget." },
       ],
+      lockerBenefits: [
+        { title:"Reduce failed pickups", desc:"We optimize reminders, communication and pickup flows to reduce friction between delivery and final collection." },
+        { title:"More operational efficiency", desc:"Fewer bottlenecks, fewer support tickets and clearer management of pickup points." },
+        { title:"Better customer experience", desc:"Clearer messages, CTAs and flows help customers complete pickup without confusion." },
+        { title:"Data-driven strategy", desc:"We analyze conversion, usage and friction points to improve pickup, retention and margins." },
+      ],
+      lockerUseCases: [
+        "E-commerce brands offering locker / pickup-point collection",
+        "Local brands looking to reduce failed-delivery costs",
+        "Vertical marketplaces improving last-mile operations",
+        "Logistics operators increasing pickup-point usage and performance",
+      ],
     },
     pt: {
       slogan: "Clientes reais.\nCrescimento mensurável.",
@@ -215,6 +252,12 @@ export default function Home() {
       totalNote: "Serviços mensais renovam todo mês. Serviços únicos são pagos uma só vez.",
       packagesTitle: "Pacotes",
       whyTitle: "Por que nos escolher",
+      lockerKicker: "Para e-commerce e logística",
+      lockerTitle: "Locker Pickup Optimizer",
+      lockerHeadline: "Mais retiradas concluídas, menos atrito na última milha.",
+      lockerDesc: "Ajudamos e-commerces, marketplaces locais e operadores logísticos a reduzir retiradas perdidas, melhorar a experiência do cliente e tornar a entrega em lockers e pickup points mais eficiente.",
+      lockerPrimaryCta: "Agendar uma consultoria",
+      lockerProof: "Ideal para negócios com lógica de entrega, retirada, omnicanalidade e crescimento local.",
       finalCta: "Pronto para crescer?",
       footer: "Serviço 100% online • WhatsApp: +39 393 6232182",
       monthlyLabel: "inclui serviços mensais",
@@ -241,6 +284,18 @@ export default function Home() {
         { icon:"⟳", title:"100% online",            desc:"Gerenciamos tudo remotamente. Comunicação direta via WhatsApp e videochamada — sem encontros físicos." },
         { icon:"▲", title:"Estrutura escalável",    desc:"Comece pequeno e cresça com o tempo. Cada serviço se adapta ao seu ritmo e ao seu orçamento." },
       ],
+      lockerBenefits: [
+        { title:"Reduza retiradas falhadas", desc:"Otimizamos lembretes, comunicação e fluxos de retirada para reduzir o atrito entre entrega e coleta final." },
+        { title:"Mais eficiência operacional", desc:"Menos gargalos, menos tickets de suporte e uma gestão mais clara dos pontos de retirada." },
+        { title:"Melhor experiência do cliente", desc:"Mensagens, CTAs e fluxos mais claros ajudam o cliente a concluir a retirada sem confusão." },
+        { title:"Estratégia orientada por dados", desc:"Analisamos conversão, uso e pontos de atrito para melhorar pickup, retenção e margem." },
+      ],
+      lockerUseCases: [
+        "E-commerces que querem oferecer retirada em locker / pickup point",
+        "Marcas locais que querem reduzir custos de entrega falhada",
+        "Marketplaces verticais que querem melhorar a última milha",
+        "Operadores logísticos que querem aumentar uso e performance dos pontos de retirada",
+      ],
     },
     de: {
       slogan: "Echte Kunden.\nMessbares Wachstum.",
@@ -258,6 +313,12 @@ export default function Home() {
       totalNote: "Monatliche Leistungen verlängern sich monatlich. Einmalige Leistungen werden einmalig bezahlt.",
       packagesTitle: "Pakete",
       whyTitle: "Warum uns wählen",
+      lockerKicker: "Für E-Commerce und Logistik",
+      lockerTitle: "Locker Pickup Optimizer",
+      lockerHeadline: "Mehr abgeschlossene Abholungen, weniger Reibung auf der letzten Meile.",
+      lockerDesc: "Wir helfen E-Commerce-Marken, lokalen Marktplätzen und Logistikunternehmen, verpasste Abholungen zu reduzieren, das Kundenerlebnis zu verbessern und Locker- sowie Pickup-Point-Zustellung effizienter zu machen.",
+      lockerPrimaryCta: "Beratung buchen",
+      lockerProof: "Ideal für Unternehmen mit Liefer-, Abhol-, Omnichannel- und lokalem Wachstumsfokus.",
       finalCta: "Bereit zu wachsen?",
       footer: "100% Online-Service • WhatsApp: +39 393 6232182",
       monthlyLabel: "enthält monatliche Leistungen",
@@ -284,6 +345,18 @@ export default function Home() {
         { icon:"⟳", title:"100% online",           desc:"Wir verwalten alles remote. Direkte Kommunikation per WhatsApp und Videoanruf — keine physischen Termine." },
         { icon:"▲", title:"Skalierbare Struktur",  desc:"Klein anfangen und im Laufe der Zeit wachsen. Jede Leistung passt sich Ihrem Tempo und Budget an." },
       ],
+      lockerBenefits: [
+        { title:"Weniger fehlgeschlagene Abholungen", desc:"Wir optimieren Erinnerungen, Kommunikation und Abholprozesse, um Reibung zwischen Zustellung und finaler Abholung zu senken." },
+        { title:"Mehr operative Effizienz", desc:"Weniger Engpässe, weniger Support-Tickets und eine klarere Verwaltung der Abholpunkte." },
+        { title:"Bessere Customer Experience", desc:"Klarere Nachrichten, CTAs und Abläufe helfen Kunden, die Abholung ohne Verwirrung abzuschließen." },
+        { title:"Datengetriebene Strategie", desc:"Wir analysieren Conversion, Nutzung und Reibungspunkte, um Abholung, Bindung und Marge zu verbessern." },
+      ],
+      lockerUseCases: [
+        "E-Commerce-Brands mit Locker- / Pickup-Point-Abholung",
+        "Lokale Marken, die Kosten durch fehlgeschlagene Zustellungen senken wollen",
+        "Vertikale Marktplätze, die ihre Last-Mile verbessern wollen",
+        "Logistikunternehmen, die Nutzung und Performance ihrer Abholpunkte steigern wollen",
+      ],
     },
   } as const;
 
@@ -298,6 +371,15 @@ export default function Home() {
     total: activeServices.reduce((a, s) => a + s.numericPrice, 0),
     hasRecurring: activeServices.some((s) => s.recurring),
   }), [activeServices]);
+
+  const servicesWhatsappUrl = useMemo(
+    () => buildServicesWhatsAppUrl({
+      phone: "393936232182",
+      lang,
+      services: activeServices.map(({ label, price }) => ({ label, price })),
+    }),
+    [activeServices, lang]
+  );
 
   const toggle = (k: ServiceKey) =>
     setSelected((p) => p.includes(k) ? p.filter((x) => x !== k) : [...p, k]);
@@ -510,7 +592,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <a href={whatsapp} target="_blank" rel="noreferrer"
+              <a href={servicesWhatsappUrl} target="_blank" rel="noreferrer"
                 className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-bold text-white transition hover:scale-[1.02]"
                 style={{ background:`linear-gradient(135deg,${blue},${dark})` }}>
                 {t.cta}
@@ -546,7 +628,7 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                  <a href={whatsapp} target="_blank" rel="noreferrer"
+                  <a href={buildPackageWhatsAppUrl({ phone: "393936232182", lang, packageName: pkg.name, packagePrice: pkg.price })} target="_blank" rel="noreferrer"
                     className="mt-8 flex w-full items-center justify-center rounded-2xl py-3.5 text-sm font-bold transition hover:scale-[1.02]"
                     style={{ background: pkg.highlight ? "#fff" : dark, color: pkg.highlight ? dark : "#fff" }}>
                     {t.contactPkg} →
@@ -570,6 +652,70 @@ export default function Home() {
                 <p className="mt-3 text-sm leading-7 text-slate-500">{item.desc}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-6 pb-8">
+          <div className="overflow-hidden rounded-[2rem] border" style={{ borderColor:"rgba(10,31,70,.08)", background:"linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(239,246,255,.98) 100%)", boxShadow:"0 24px 80px rgba(10,31,70,.08)" }}>
+            <div className="grid gap-0 lg:grid-cols-[1.15fr_.85fr]">
+              <div className="p-8 md:p-10">
+                <div className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.24em]"
+                  style={{ borderColor:`${blue}24`, background:`${blue}08`, color:blue }}>
+                  {t.lockerKicker}
+                </div>
+                <h2 className="mt-5 text-3xl font-black tracking-tight md:text-5xl">{t.lockerTitle}</h2>
+                <p className="mt-3 max-w-2xl text-lg font-semibold leading-8" style={{ color:dark }}>{t.lockerHeadline}</p>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-500">{t.lockerDesc}</p>
+
+                <div className="mt-8 grid gap-4 md:grid-cols-2">
+                  {t.lockerBenefits.map((item) => (
+                    <div key={item.title} className="rounded-2xl border p-5"
+                      style={{ borderColor:"rgba(10,31,70,.08)", background:"rgba(255,255,255,.8)" }}>
+                      <div className="text-sm font-black" style={{ color:dark }}>{item.title}</div>
+                      <p className="mt-2 text-sm leading-6 text-slate-500">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="mt-6 text-sm leading-6 text-slate-500">{t.lockerProof}</p>
+
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <a href={whatsapp} target="_blank" rel="noreferrer"
+                    className="inline-flex items-center justify-center rounded-2xl px-6 py-3.5 text-sm font-bold text-white transition hover:scale-[1.02]"
+                    style={{ background:`linear-gradient(135deg,${blue},${dark})` }}>
+                    {t.lockerPrimaryCta}
+                  </a>
+                  <a href={whatsapp} target="_blank" rel="noreferrer"
+                    className="inline-flex items-center justify-center rounded-2xl border px-6 py-3.5 text-sm font-bold transition hover:scale-[1.02]"
+                    style={{ borderColor:`${blue}30`, color:dark, background:"rgba(255,255,255,.78)" }}>
+                    {t.cta}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-between p-8 md:p-10 text-white"
+                style={{ background:`linear-gradient(160deg,${dark} 0%,${blue} 100%)` }}>
+                <div>
+                  <div className="text-[11px] font-black uppercase tracking-[0.24em] text-white/55">Use cases</div>
+                  <div className="mt-6 space-y-3">
+                    {t.lockerUseCases.map((item) => (
+                      <div key={item} className="rounded-2xl border px-4 py-4 text-sm leading-6"
+                        style={{ borderColor:"rgba(255,255,255,.14)", background:"rgba(255,255,255,.08)" }}>
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-8 rounded-3xl border p-5"
+                  style={{ borderColor:"rgba(255,255,255,.14)", background:"rgba(255,255,255,.08)" }}>
+                  <div className="text-sm font-black">Last-mile, pickup e conversione</div>
+                  <p className="mt-2 text-sm leading-6 text-white/70">
+                    Strategia, UX, comunicazione e validazione commerciale per trasformare il pickup in un vantaggio competitivo.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
